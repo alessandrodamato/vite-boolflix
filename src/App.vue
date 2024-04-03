@@ -28,7 +28,6 @@ import Footer from './components/Footer.vue'
         })
         .then(res => {
           store.moviesList = res.data.results;
-          console.log(store.moviesList);
         })
         .catch(error => {
           console.log(error);
@@ -45,7 +44,6 @@ import Footer from './components/Footer.vue'
         })
         .then(res => {
           store.tvList = res.data.results;
-          console.log(store.tvList);
         })
         .catch(error => {
           console.log(error);
