@@ -7,6 +7,7 @@ import { store } from '../../data/store'
       originalTitle: String,
       lang: String,
       vote: Number,
+      bio: String
     },
 
     data(){
@@ -30,24 +31,34 @@ import { store } from '../../data/store'
 
 <template>
 
-  <li class="my-5">
+  <li class="my-5 mx-3">
 
-    <div class="poster">
+    <div class="poster w-100 h-100 position-relative">
+      
       <img v-if="path !== null" :src="`https://image.tmdb.org/t/p/w342${path}`" :alt="title" class="img-fluid">
+
+      <div class="poster-content w-100 h-100 position-absolute top-0 left-0 p-3 overflow-auto" :class="{'d-block' : path === null}">
+
+        <div><span>Titolo:</span> {{ title }}</div>
+
+        <div><span>Titolo Originale:</span> {{ originalTitle }}</div>
+
+        <div class="lang my-1s">
+          <img :src="lang === 'EN' ? '/public/img/en.png' : `https://flagsapi.com/${lang}/shiny/64.png`" :alt="lang" class="img-fluid">
+        </div>
+
+        <div>
+          <span>Voto: </span>
+          <i v-for="(star, index) in 5" :key="`star-${index}`" class="fa-solid fa-star" :class="{'text-warning' : voteCalc(vote) > index}"></i>
+        </div>
+
+        <p>{{ bio }}</p>
+
+      </div>
+      
     </div>
 
-    <div>Titolo: {{ title }}</div>
-
-    <div>Titolo Originale: {{ originalTitle }}</div>
-
-    <div class="lang">
-      <img :src="lang === 'EN' ? '/public/img/en.png' : `https://flagsapi.com/${lang}/shiny/64.png`" :alt="lang" class="img-fluid">
-    </div>
-
-    <div>
-      Voto: {{ voteCalc(vote) }}
-      <i v-for="(star, index) in 5" :key="`star-${index}`" class="fa-solid fa-star" :class="{'text-warning' : voteCalc(vote) > index}"></i>
-    </div>
+    
 
   </li>
   
@@ -57,15 +68,29 @@ import { store } from '../../data/store'
 
 <style lang="scss" scoped>
 
-.poster{
+li{
   width: 342px;
-  margin: auto;
+  height: 513px;
+  .poster{
+    &:hover .poster-content{
+      background-color: rgba(0,0,0,.7);
+      display: block !important;
+    }
+    .poster-content{
+      display: none;
+      span{
+        font-weight: 600;
+      }
+    }
+  }
+  .lang{
+    width: 64px;
+    height: 64px;
+    line-height: 64px;
+  }
 }
 
-.lang{
-  width: 64px;
-  margin: auto;
-}
+
 
 
 </style>

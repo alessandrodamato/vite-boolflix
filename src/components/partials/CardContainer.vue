@@ -22,9 +22,9 @@ import Card from './Card.vue';
 
 <template>
 
-  <div class="mb-5">
+  <div>
 
-    <ul>
+    <ul class="d-flex justify-content-center flex-wrap">
 
       <Card
         v-for="card in type"
@@ -33,7 +33,8 @@ import Card from './Card.vue';
         :title="type === store.moviesList ? card.title : card.name" 
         :originalTitle="type === store.moviesList ? card.original_title : card.original_name" 
         :lang="card.original_language.toUpperCase()" 
-        :vote="card.vote_average" 
+        :vote="card.vote_average"
+        :bio="card.overview" 
       />
 
     </ul>

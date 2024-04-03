@@ -18,12 +18,12 @@ import CardContainer from './partials/CardContainer.vue';
 
 <template>
 
-  <main class="text-center">
+  <main>
 
-    <h3 v-if="store.moviesList.length > 0">Film</h3>
+    <h2 v-if="store.moviesList.length > 0" class="text-center">Film</h2>
     <CardContainer :type="store.moviesList" />
     
-    <h3 v-if="store.tvList.length > 0">Serie TV</h3>
+    <h2 v-if="store.tvList.length > 0" class="text-center">Serie TV</h2>
     <CardContainer :type="store.tvList" />
 
   </main>

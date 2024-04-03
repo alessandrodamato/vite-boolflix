@@ -13,20 +13,22 @@ import { store } from '../data/store'
 
 <template>
 
-  <header class="text-center">
+  <header class="d-flex justify-content-between p-3">
 
-    <div class="mt-3">
+    <h1 class="logo text-uppercase">Boolflix</h1>
+
+    <div class="searchbar">
 
       <input
         type="text"
-        class="mx-3"
+        class="me-3"
         placeholder="Cerca film o serie TV"
         v-model="store.nameToSearch"
         @keyup.enter="$emit('search')"
       >
 
       <button
-        class="btn btn-danger mx-3"
+        class="btn btn-danger"
         @click="$emit('search')"
       >
       Cerca
@@ -41,5 +43,18 @@ import { store } from '../data/store'
 
 
 <style lang="scss" scoped>
+
+.logo{
+  color: red;
+}
+
+button{
+  background-color: red;
+  &:hover{
+    scale: 1.1;
+    background-color: rgb(255, 41, 41);
+    box-shadow: 0 0 5px 2px white;
+  }
+}
 
 </style>
