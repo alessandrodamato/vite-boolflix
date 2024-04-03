@@ -23,7 +23,7 @@ import CardContainer from './partials/CardContainer.vue';
     <h3 v-if="store.moviesList.length > 0">Film</h3>
     <CardContainer :type="store.moviesList" />
     
-    <h3 v-if="store.moviesList.length > 0">Serie TV</h3>
+    <h3 v-if="store.tvList.length > 0">Serie TV</h3>
     <CardContainer :type="store.tvList" />
 
   </main>

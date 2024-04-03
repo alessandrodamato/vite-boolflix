@@ -22,7 +22,8 @@ import Footer from './components/Footer.vue'
         axios.get(store.apiMovieUrl, {
           params:{
             api_key: store.api_key,
-            query: store.nameToSearch
+            query: store.nameToSearch,
+            language: 'it-IT' // --------------------------------------------------
           }
         })
         .then(res => {
@@ -38,7 +39,8 @@ import Footer from './components/Footer.vue'
         axios.get(store.apiTvUrl, {
           params:{
             api_key: store.api_key,
-            query: store.nameToSearch
+            query: store.nameToSearch,
+            language: 'it-IT' // --------------------------------------------------
           }
         })
         .then(res => {

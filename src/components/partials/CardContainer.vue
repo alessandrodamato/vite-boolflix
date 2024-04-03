@@ -22,7 +22,7 @@ import Card from './Card.vue';
 
 <template>
 
-  <div class="my-5">
+  <div class="mb-5">
 
     <ul>
 
@@ -31,7 +31,7 @@ import Card from './Card.vue';
         :key="card.id"
         :title="type === store.moviesList ? card.title : card.name" 
         :originalTitle="type === store.moviesList ? card.original_title : card.original_name" 
-        :lang="card.original_language" 
+        :lang="card.original_language.toUpperCase()" 
         :vote="card.vote_average" 
       />
 
