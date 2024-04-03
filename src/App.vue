@@ -1,4 +1,6 @@
 <script>
+import { store } from './data/store'
+import axios from 'axios'
 import Header from './components/Header.vue'
 import Main from './components/Main.vue'
 import Footer from './components/Footer.vue'
@@ -7,6 +9,51 @@ import Footer from './components/Footer.vue'
       Header,
       Main,
       Footer
+    },
+
+    data(){
+      return{
+        store
+      }
+    },
+
+    methods: {
+      getMovieApi(){
+        axios.get(store.apiMovieUrl, {
+          params:{
+            api_key: store.api_key,
+            query: store.nameToSearch
+          }
+        })
+        .then(res => {
+          store.moviesList = res.data.results;
+          console.log(store.moviesList);
+        })
+        .catch(error => {
+          console.log(error);
+        })
+      },
+      
+      getTvApi(){
+        axios.get(store.apiTvUrl, {
+          params:{
+            api_key: store.api_key,
+            query: store.nameToSearch
+          }
+        })
+        .then(res => {
+          store.tvList = res.data.results;
+          console.log(store.tvList);
+        })
+        .catch(error => {
+          console.log(error);
+        })
+      }
+    },
+
+    mounted(){
+      this.getMovieApi()
+      this.getTvApi()
     }
   }
 </script> 
@@ -15,7 +62,7 @@ import Footer from './components/Footer.vue'
 
 <template>
 
-  <Header />
+  <Header @search="getMovieApi(); getTvApi()" />
 
   <Main />
   

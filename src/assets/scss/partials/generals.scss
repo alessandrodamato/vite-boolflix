@@ -1,1 +1,11 @@
 @use './vars.scss' as *;
+
+body{
+  background-color: black !important;
+  color: white !important;
+}
+
+ul{
+  list-style: none;
+  padding: 0 !important;
+}

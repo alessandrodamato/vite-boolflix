@@ -1,6 +1,11 @@
 <script>
+import { store } from '../data/store'
   export default {
-    
+    data(){
+      return{
+        store
+      }
+    }
   }
 </script>
 
@@ -8,8 +13,8 @@
 
 <template>
 
-  <footer>
-    f
+  <footer class="text-center">
+    
   </footer>
   
 </template>

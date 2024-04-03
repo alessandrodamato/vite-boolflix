@@ -1,6 +1,18 @@
 <script>
+import { store } from '../../data/store'
   export default {
-    
+    props:{
+      title: String,
+      originalTitle: String,
+      lang: String,
+      vote: Number,
+    },
+
+    data(){
+      return{
+        store
+      }
+    }
   }
 </script>
 
@@ -8,9 +20,12 @@
 
 <template>
 
-  <div>
-    
-  </div>
+  <li>
+    {{ title }}
+    {{ originalTitle }}
+    {{ lang }}
+    {{ vote }}
+  </li>
   
 </template>
 
