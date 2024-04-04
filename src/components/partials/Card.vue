@@ -35,9 +35,11 @@ import { store } from '../../data/store'
 
     <div class="poster w-100 h-100 position-relative">
       
-      <img v-if="path !== null" :src="`https://image.tmdb.org/t/p/w342${path}`" :alt="title" class="img-fluid">
+      <img v-if="path !== null" :src="`https://image.tmdb.org/t/p/w342${path}`" :alt="title">
 
-      <div class="poster-content w-100 h-100 position-absolute top-0 left-0 p-3 overflow-auto" :class="{'d-block' : path === null}">
+      <div v-else class="film-icon"><i class="fa-solid fa-film"></i></div>
+
+      <div class="poster-content w-100 h-100 position-absolute top-0 left-0 p-3 overflow-auto">
 
         <div><span>Titolo:</span> {{ title }}</div>
 
@@ -72,6 +74,22 @@ li{
   width: 342px;
   height: 513px;
   .poster{
+    background-color: lightgray;
+    & > img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    &:hover .film-icon{
+      display: none;
+    }
+    .film-icon{
+      font-size: 5rem;
+      text-align: center;
+      line-height: 513px;
+      text-shadow: 0 0 7px black;
+      color: gray;
+    }
     &:hover .poster-content{
       background-color: rgba(0,0,0,.7);
       display: block !important;

@@ -13,22 +13,22 @@ import { store } from '../data/store'
 
 <template>
 
-  <header class="d-flex justify-content-between p-3">
+  <header class="d-flex justify-content-between align-items-center py-3 px-5">
 
     <h1 class="logo text-uppercase">Boolflix</h1>
 
-    <div class="searchbar">
+    <div class="searchbar d-flex">
 
       <input
         type="text"
-        class="me-3"
+        class="form-control me-3"
         placeholder="Cerca film o serie TV"
-        v-model="store.nameToSearch"
+        v-model.trim="store.nameToSearch"
         @keyup.enter="$emit('search')"
       >
 
       <button
-        class="btn btn-danger"
+        class="btn btn-danger px-4"
         @click="$emit('search')"
       >
       Cerca
