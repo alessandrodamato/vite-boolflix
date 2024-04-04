@@ -5,6 +5,25 @@ export const store = reactive ({
   apiMovieUrl: 'https://api.themoviedb.org/3/search/movie',
   apiTvUrl: 'https://api.themoviedb.org/3/search/tv',
   nameToSearch: '',
+  currentLang: 'it-IT',
   moviesList: [],
-  tvList: []
+  tvList: [],
+  languages: [
+    {
+      code: 'it-IT',
+      src: 'IT'
+    },
+    {
+      code: 'en-US',
+      src: 'GB'
+    },
+    {
+      code: 'de-DE',
+      src: 'DE'
+    },
+    {
+      code: 'fr-FR',
+      src: 'FR'
+    }  
+  ]
 })

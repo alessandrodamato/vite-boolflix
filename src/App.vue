@@ -23,7 +23,7 @@ import Footer from './components/Footer.vue'
           params:{
             api_key: store.api_key,
             query: store.nameToSearch,
-            language: 'it-IT' // --------------------------------------------------
+            language: store.currentLang
           }
         })
         .then(res => {
@@ -39,7 +39,7 @@ import Footer from './components/Footer.vue'
           params:{
             api_key: store.api_key,
             query: store.nameToSearch,
-            language: 'it-IT' // --------------------------------------------------
+            language: store.currentLang
           }
         })
         .then(res => {
