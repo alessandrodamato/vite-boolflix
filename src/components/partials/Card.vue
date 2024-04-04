@@ -46,7 +46,7 @@ import { store } from '../../data/store'
         <div v-if="title !== originalTitle"><span>Titolo Originale:</span> {{ originalTitle }}</div>
 
         <div class="lang my-1s">
-          <img :src="lang === 'EN' ? '/public/img/en.png' : `https://flagsapi.com/${lang}/shiny/64.png`" :alt="lang" class="img-fluid">
+          <img :src="lang === 'EN' ? 'img/en.png' : `https://flagsapi.com/${lang}/shiny/64.png`" :alt="lang" class="img-fluid">
         </div>
 
         <div>

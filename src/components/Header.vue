@@ -15,7 +15,10 @@ import { store } from '../data/store'
 
   <header class="d-flex justify-content-between align-items-center py-3 px-5">
 
-    <h1 class="logo text-uppercase">Boolflix</h1>
+    <div class="position-relative">
+      <h1 class="logo text-uppercase">Boolflix</h1>
+      <div class="curve position-absolute w-100 h-100 top-0 start-0"></div>
+    </div>
 
     <div class="searchbar d-flex">
 
@@ -68,6 +71,12 @@ import { store } from '../data/store'
 
 .logo{
   color: red;
+  font-size: 3rem;
+  font-weight: 900 !important;
+}
+.curve{
+  clip-path: ellipse(237px 48px at 51.5% 136.35%);
+  background-color: black;
 }
 
 .languages{
