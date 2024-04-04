@@ -29,12 +29,14 @@ import Card from './Card.vue';
       <Card
         v-for="card in type"
         :key="card.id"
+        :id="card.id"
         :path="card.poster_path"
         :title="type === store.moviesList ? card.title : card.name" 
         :originalTitle="type === store.moviesList ? card.original_title : card.original_name" 
         :lang="card.original_language.toUpperCase()" 
         :vote="card.vote_average"
         :bio="card.overview" 
+        :type="type === store.moviesList ? 'movie' : 'tv'"
       />
 
     </ul>

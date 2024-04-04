@@ -2,12 +2,14 @@ import { reactive } from "vue";
 
 export const store = reactive ({
   api_key: '33f41a74a91b85827dfbc579de5d7473',
-  apiMovieUrl: 'https://api.themoviedb.org/3/search/movie',
-  apiTvUrl: 'https://api.themoviedb.org/3/search/tv',
+  apiUrl: 'https://api.themoviedb.org/3/',
   nameToSearch: '',
   currentLang: 'it-IT',
+  isCardOpen: false,
+  cardOpen: {},
   moviesList: [],
   tvList: [],
+  creditsList: [],
   languages: [
     {
       code: 'it-IT',
@@ -25,5 +27,5 @@ export const store = reactive ({
       code: 'fr-FR',
       src: 'FR'
     }  
-  ]
+  ]  
 })

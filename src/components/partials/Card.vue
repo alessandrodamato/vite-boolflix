@@ -1,13 +1,16 @@
 <script>
 import { store } from '../../data/store'
+import axios from 'axios'
   export default {
     props:{
+      id: Number,
       path: String,
       title: String,
       originalTitle: String,
       lang: String,
       vote: Number,
-      bio: String
+      bio: String,
+      type: String
     },
 
     data(){
@@ -22,6 +25,29 @@ import { store } from '../../data/store'
           return '-'
         }
         return Math.ceil(v / 2)
+      },
+
+      getCreditsApi(){
+        axios.get(store.apiUrl + `${this.type}/${this.id}/credits`, {
+          params:{
+            api_key: this.store.api_key,
+          }
+        })
+        .then(res => {
+          this.store.creditsList = res.data.cast;
+          this.store.isCardOpen = true;
+          this.store.cardOpen = {
+            path: this.path,
+            title: this.title,
+            originalTitle: this.originalTitle,
+            lang: this.lang,
+            vote: this.voteCalc(this.vote),
+            bio: this.bio
+          };
+        })
+        .catch(error => {
+          console.log(error);
+        })
       }
     }
   }
@@ -33,7 +59,7 @@ import { store } from '../../data/store'
 
   <li class="my-5 mx-3">
 
-    <div class="poster w-100 h-100 position-relative">
+    <div class="poster w-100 h-100 position-relative" @click="getCreditsApi()">
       
       <img v-if="path !== null" :src="`https://image.tmdb.org/t/p/w342${path}`" :alt="title">
 
@@ -45,7 +71,7 @@ import { store } from '../../data/store'
 
         <div v-if="title !== originalTitle"><span>Titolo Originale:</span> {{ originalTitle }}</div>
 
-        <div class="lang my-1s">
+        <div class="lang my-1">
           <img :src="lang === 'EN' ? 'img/en.png' : `https://flagsapi.com/${lang}/shiny/64.png`" :alt="lang" class="img-fluid">
         </div>
 

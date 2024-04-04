@@ -19,7 +19,7 @@ import Footer from './components/Footer.vue'
 
     methods: {
       getMovieApi(){
-        axios.get(store.apiMovieUrl, {
+        axios.get(store.apiUrl + 'search/movie', {
           params:{
             api_key: store.api_key,
             query: store.nameToSearch,
@@ -35,7 +35,7 @@ import Footer from './components/Footer.vue'
       },
       
       getTvApi(){
-        axios.get(store.apiTvUrl, {
+        axios.get(store.apiUrl + 'search/tv', {
           params:{
             api_key: store.api_key,
             query: store.nameToSearch,
