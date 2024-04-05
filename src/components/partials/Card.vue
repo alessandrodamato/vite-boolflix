@@ -67,18 +67,18 @@ import axios from 'axios'
 
       <div class="poster-content w-100 h-100 position-absolute top-0 left-0 p-3 overflow-auto">
 
-        <div><span>Titolo:</span> {{ title }}</div>
+        <h5><strong>Titolo:</strong> {{ title }}</h5>
 
-        <div v-if="title !== originalTitle"><span>Titolo Originale:</span> {{ originalTitle }}</div>
+        <h6 v-if="title !== originalTitle"><strong>Titolo Originale:</strong> {{ originalTitle }}</h6>
 
         <div class="lang my-1">
           <img :src="lang === 'EN' ? 'img/en.png' : `https://flagsapi.com/${lang}/shiny/64.png`" :alt="lang" class="img-fluid">
         </div>
 
-        <div>
-          <span>Voto: </span>
+        <h6>
+          <strong>Voto: </strong>
           <i v-for="(star, index) in 5" :key="`star-${index}`" class="fa-solid fa-star" :class="{'text-warning' : voteCalc(vote) > index}"></i>
-        </div>
+        </h6>
 
         <p>{{ bio }}</p>
 

@@ -32,27 +32,38 @@ import { store } from '../../data/store'
 
           <div class="position-absolute top-0 end-0 p-2 bg-danger cursor_pointer" @click="store.isCardOpen = false">X</div>
 
-          <div><span>Titolo:</span> {{ store.cardOpen.title }}</div>
+          <h5 class="mb-3"><strong>Titolo:</strong> {{ store.cardOpen.title }}</h5>
 
-          <div v-if="store.cardOpen.title !== store.cardOpen.originalTitle"><span>Titolo Originale:</span> {{ store.cardOpen.originalTitle }}</div>
+          <h6 v-if="store.cardOpen.title !== store.cardOpen.originalTitle" class="mb-3"><strong>Titolo Originale:</strong> {{ store.cardOpen.originalTitle }}</h6>
 
-          <div class="lang my-1">
+          <div class="lang mb-3">
             <img :src="store.cardOpen.lang === 'EN' ? 'img/en.png' : `https://flagsapi.com/${store.cardOpen.lang}/shiny/64.png`" :alt="store.cardOpen.lang" class="img-fluid">
           </div>
 
-          <div>
-            <span>Voto: </span>
+          <h6 class="mb-4">
+            <strong>Voto: </strong>
             <i v-for="(star, index) in 5" :key="`star-${index}`" class="fa-solid fa-star" :class="{'text-warning' : store.cardOpen.vote > index}"></i>
+          </h6>
+
+          <p class="mb-3">{{ store.cardOpen.bio }}</p>
+
+          <div v-if="store.creditsList.length > 0">
+            <h5 class="text-center mb-3">Attori Principali</h5>
+            <ul class="d-flex justify-content-center">
+              <li
+                v-for="(actor, index) in store.creditsList"
+                :key="actor.id"
+                v-show="index < 5"
+                class="actor me-3"
+              >
+                <div class="actor-image overflow-hidden rounded-4 m-auto">
+                  <img v-if="actor.profile_path !== null" :src="`https://image.tmdb.org/t/p/w185${actor.profile_path}`" :alt="actor.name" class="img-fluid">
+                  <div v-else><i class="fa-solid fa-circle-user"></i></div>
+                </div>
+                <div class="text-center">{{ actor.name }}</div>
+              </li>
+            </ul>
           </div>
-
-          <p>{{ store.cardOpen.bio }}</p>
-
-          <!-- stampare dinamicamente 5 nomi e generi -->
-          <div>{{ store.creditsList[1].name }}</div> 
-          <div>{{ store.creditsList[2].name }}</div> 
-          <div>{{ store.creditsList[3].name }}</div> 
-          <div>{{ store.creditsList[4].name }}</div> 
-          <div>{{ store.creditsList[5].name }}</div> 
           
         </div>
 
@@ -76,6 +87,7 @@ import { store } from '../../data/store'
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 3;
+  overflow: auto;
   background-color: black;
   border: 1px solid white;
   .poster{
@@ -97,6 +109,21 @@ import { store } from '../../data/store'
   
   .lang{
     width: 64px;
+  }
+  .actor{
+    width: 20%;
+    .actor-image{
+      width: 120px;
+      & > div{
+        width: 120px;
+        height: 180px;
+        font-size: 4rem;
+        text-align: center;
+        line-height: 180px;
+        background-color: lightgray;
+        color: gray;
+      }
+    }
   }
 }
 
