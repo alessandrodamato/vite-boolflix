@@ -13,16 +13,16 @@ import { store } from '../data/store'
 
 <template>
 
-  <header class="d-flex justify-content-between align-items-center py-3 px-5">
+  <header class="d-flex justify-content-between align-items-center flex-wrap py-3 px-5">
 
-    <div class="position-relative" @click="store.nameToSearch = ''; $emit('search')">
+    <div class="position-relative logo-box" @click="store.nameToSearch = ''; $emit('search')">
       <h1 class="logo text-uppercase">Boolflix</h1>
       <div class="curve position-absolute w-100 h-100 top-0 start-0"></div>
     </div>
 
-    <div class="searchbar d-flex">
+    <div class="searchbar d-flex align-items-center">
 
-      <div class="languages position-relative">
+      <div class="languages position-relative flex-shrink-0">
         <img
             v-for="(lang, index) in store.languages"
             :key="`lang-${index}`"
@@ -44,16 +44,19 @@ import { store } from '../data/store'
         </div>
       </div>
 
+      <select class="form-select ms-3"></select>
+      <select class="form-select ms-3"></select>
+
       <input
         type="text"
-        class="form-control mx-3"
+        class="form-control ms-3"
         placeholder="Cerca film o serie TV"
         v-model.trim="store.nameToSearch"
         @keyup.enter="$emit('search')"
       >
 
       <button
-        class="btn btn-danger px-4"
+        class="btn btn-danger px-4 ms-3"
         @click="$emit('search')"
       >
       Cerca
@@ -88,12 +91,39 @@ import { store } from '../data/store'
   }
 }
 
+select{
+  width: 150px;
+}
+
+input{
+  width: 300px;
+  height: 40px;
+}
+
 button{
   background-color: red;
+  height: 40px;
   &:hover{
     scale: 1.1;
     background-color: rgb(255, 41, 41);
     box-shadow: 0 0 5px 2px white;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  header{
+    justify-content: center !important;
+  }
+
+  .logo-box{
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  input, select{
+    width: auto;
   }
 }
 

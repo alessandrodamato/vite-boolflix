@@ -45,12 +45,12 @@ import { store } from '../../data/store'
             <i v-for="(star, index) in 5" :key="`star-${index}`" class="fa-solid fa-star" :class="{'text-warning' : store.cardOpen.vote > index}"></i>
           </h6>
 
-          <div class="mb-4">
+          <div v-if="store.currentGenres.length > 0" class="mb-4">
             <strong>Genere: </strong>
             <span>{{ store.currentGenres.join(', ') }}</span>
           </div>
 
-          <p class="mb-3">{{ store.cardOpen.bio }}</p>
+          <p class="mb-3" :class="{'mt-4' : store.currentGenres.length === 0}">{{ store.cardOpen.bio }}</p>
 
           <div v-if="store.creditsList.length > 0">
             <h5 class="text-center mb-3">Attori Principali</h5>
