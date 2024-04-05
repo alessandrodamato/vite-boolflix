@@ -5,6 +5,15 @@ import { store } from '../data/store'
       return{
         store
       }
+    },
+
+    methods:{
+      filterByType(event){
+        this.store.currentFilter = event.target.value;
+        console.log(this.store.currentFilter);
+        console.log(this.store.moviesList);
+        console.log(this.store.tvList);
+      }
     }
   }
 </script>
@@ -45,7 +54,12 @@ import { store } from '../data/store'
       </div>
 
       <select class="form-select ms-3"></select>
-      <select class="form-select ms-3"></select>
+
+      <select @change="filterByType($event)" class="form-select ms-3">
+        <option value="all" selected>Tutti</option>
+        <option value="movie">Film</option>
+        <option value="tv">Serie TV</option>
+      </select>
 
       <input
         type="text"
