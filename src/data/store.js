@@ -6,7 +6,7 @@ export const store = reactive ({
   nameToSearch: '',
   currentLang: 'it-IT',
   currentType: 'all',
-  currentGenre: 'all',
+  // currentGenre: 'all',
   isCardOpen: false,
   cardOpen: {},
   currentGenres: [],
