@@ -79,7 +79,7 @@ import Footer from './components/Footer.vue'
 
   <Header @search="getMovieApi(); getTvApi()" />
 
-  <Main />
+  <Main  />
   
   <Footer />
 

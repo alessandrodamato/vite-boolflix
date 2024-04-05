@@ -24,12 +24,12 @@ import CardOpen from './partials/CardOpen.vue';
 
     <div v-if="store.isCardOpen" class="dark-layer" @click="store.isCardOpen = false"></div>
 
-    <div v-if="store.moviesList.length > 0 && (store.currentFilter === 'movie' || store.currentFilter === 'all')">
+    <div v-if="store.moviesList.length > 0 && (store.currentType === 'movie' || store.currentType === 'all')">
       <h2 class="text-center">Film</h2>
       <CardContainer :type="store.moviesList" />
     </div>
     
-    <div v-if="store.tvList.length > 0 && (store.currentFilter === 'tv' || store.currentFilter === 'all')">
+    <div v-if="store.tvList.length > 0 && (store.currentType === 'tv' || store.currentType === 'all')">
       <h2 class="text-center">Serie TV</h2>
       <CardContainer :type="store.tvList" />
     </div>

@@ -9,10 +9,11 @@ import { store } from '../data/store'
 
     methods:{
       filterByType(event){
-        this.store.currentFilter = event.target.value;
-        console.log(this.store.currentFilter);
-        console.log(this.store.moviesList);
-        console.log(this.store.tvList);
+        this.store.currentType = event.target.value;
+      },
+
+      filterByGenre(event){
+        this.store.currentGenre = parseInt(event.target.value);
       }
     }
   }
@@ -53,10 +54,13 @@ import { store } from '../data/store'
         </div>
       </div>
 
-      <select class="form-select ms-3"></select>
+      <select @change="filterByGenre($event)" class="form-select ms-3">
+        <option value="all" selected>Tutti i generi</option>
+        <option v-for="genre in store.genresList" :key="genre.id" :value="genre.id">{{ genre.name }}</option>
+      </select>
 
       <select @change="filterByType($event)" class="form-select ms-3">
-        <option value="all" selected>Tutti</option>
+        <option value="all" selected>Tutti i tipi</option>
         <option value="movie">Film</option>
         <option value="tv">Serie TV</option>
       </select>

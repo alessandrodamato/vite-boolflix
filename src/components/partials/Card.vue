@@ -71,7 +71,7 @@ import axios from 'axios'
 
 <template>
 
-  <li class="my-5 mx-3">
+  <li class="my-5 mx-3" v-show="true">
 
     <div class="poster w-100 h-100 position-relative" @click="getCreditsApi(); getGenres()">
       
