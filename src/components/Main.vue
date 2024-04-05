@@ -22,7 +22,7 @@ import CardOpen from './partials/CardOpen.vue';
 
   <main>
 
-    <div v-if="store.isCardOpen" class="blocker"></div>
+    <div v-if="store.isCardOpen" class="dark-layer" @click="store.isCardOpen = false"></div>
 
     <h2 v-if="store.moviesList.length > 0" class="text-center">Film</h2>
     <CardContainer :type="store.moviesList" />
@@ -40,7 +40,7 @@ import CardOpen from './partials/CardOpen.vue';
 
 <style lang="scss" scoped>
 
-.blocker{
+.dark-layer{
   width: 100vw;
   height: 100vh;
   position: fixed;

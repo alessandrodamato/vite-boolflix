@@ -5,11 +5,13 @@ export const store = reactive ({
   apiUrl: 'https://api.themoviedb.org/3/',
   nameToSearch: '',
   currentLang: 'it-IT',
+  currentGenres: [],
   isCardOpen: false,
   cardOpen: {},
   moviesList: [],
   tvList: [],
   creditsList: [],
+  genresList: [],
   languages: [
     {
       code: 'it-IT',

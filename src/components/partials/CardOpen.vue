@@ -13,7 +13,7 @@ import { store } from '../../data/store'
 
 <template>
 
-  <div v-if="store.isCardOpen" class="card-open p-5">
+  <div v-if="store.isCardOpen" class="card-open p-4">
 
     <div class="container h-100">
 
@@ -40,10 +40,15 @@ import { store } from '../../data/store'
             <img :src="store.cardOpen.lang === 'EN' ? 'img/en.png' : `https://flagsapi.com/${store.cardOpen.lang}/shiny/64.png`" :alt="store.cardOpen.lang" class="img-fluid">
           </div>
 
-          <h6 class="mb-4">
+          <h6 class="mb-1">
             <strong>Voto: </strong>
             <i v-for="(star, index) in 5" :key="`star-${index}`" class="fa-solid fa-star" :class="{'text-warning' : store.cardOpen.vote > index}"></i>
           </h6>
+
+          <div class="mb-4">
+            <strong>Genere: </strong>
+            <span>{{ store.currentGenres.join(', ') }}</span>
+          </div>
 
           <p class="mb-3">{{ store.cardOpen.bio }}</p>
 

@@ -10,6 +10,7 @@ import axios from 'axios'
       lang: String,
       vote: Number,
       bio: String,
+      genres: Array,
       type: String
     },
 
@@ -42,12 +43,25 @@ import axios from 'axios'
             originalTitle: this.originalTitle,
             lang: this.lang,
             vote: this.voteCalc(this.vote),
-            bio: this.bio
+            bio: this.bio,
           };
         })
         .catch(error => {
           console.log(error);
         })
+      },
+
+      getGenres(){
+        this.store.currentGenres = [];
+        this.genres.forEach(id => {
+          this.store.genresList.forEach(genre => {
+            if (id === genre.id) {
+              if (!this.store.currentGenres.includes(genre.name)) {
+                this.store.currentGenres.push(genre.name)
+              }
+            }
+          });
+        });  
       }
     }
   }
@@ -59,7 +73,7 @@ import axios from 'axios'
 
   <li class="my-5 mx-3">
 
-    <div class="poster w-100 h-100 position-relative" @click="getCreditsApi()">
+    <div class="poster w-100 h-100 position-relative" @click="getCreditsApi(); getGenres()">
       
       <img v-if="path !== null" :src="`https://image.tmdb.org/t/p/w342${path}`" :alt="title">
 

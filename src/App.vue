@@ -48,12 +48,27 @@ import Footer from './components/Footer.vue'
         .catch(error => {
           console.log(error);
         })
+      },
+
+      getGenresApi(){
+        axios.get(store.apiUrl + 'genre/movie/list', {
+          params:{
+            api_key: store.api_key
+          }
+        })
+        .then(res => {
+          store.genresList = res.data.genres;
+        })
+        .catch(error => {
+          console.log(error);
+        })
       }
     },
 
     mounted(){
       this.getMovieApi()
       this.getTvApi()
+      this.getGenresApi()
     }
   }
 </script> 

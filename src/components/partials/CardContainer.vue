@@ -36,6 +36,7 @@ import Card from './Card.vue';
         :lang="card.original_language.toUpperCase()" 
         :vote="card.vote_average"
         :bio="card.overview" 
+        :genres="card.genre_ids"
         :type="type === store.moviesList ? 'movie' : 'tv'"
       />
 

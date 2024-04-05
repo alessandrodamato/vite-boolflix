@@ -15,7 +15,7 @@ import { store } from '../data/store'
 
   <header class="d-flex justify-content-between align-items-center py-3 px-5">
 
-    <div class="position-relative">
+    <div class="position-relative" @click="store.nameToSearch = ''; $emit('search')">
       <h1 class="logo text-uppercase">Boolflix</h1>
       <div class="curve position-absolute w-100 h-100 top-0 start-0"></div>
     </div>
